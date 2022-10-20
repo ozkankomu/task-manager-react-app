@@ -10,13 +10,13 @@ const TaskManager = () => {
     id: "",
     task: "",
     date: "",
+    completed: false,
   });
 
   const handleTasks = (e) => {
     e.preventDefault();
-    console.log(tasks.task.length);
     setTodos([...todos, tasks]);
-    setTasks({ id: "", task: "", date: "" });
+    setTasks({ id: "", task: "", date: "", completed: false });
   };
 
   useEffect(() => {
@@ -67,7 +67,14 @@ const TaskManager = () => {
           {!showTasks ? "Show Tasks" : "Hide Tasks"}
         </button>
       </div>
-      {showTasks && <TaskCard todos={todos} setTodos={setTodos} />}
+      {showTasks && (
+        <TaskCard
+          todos={todos}
+          setTodos={setTodos}
+          setTasks={setTasks}
+          tasks={tasks}
+        />
+      )}
     </form>
   );
 };
