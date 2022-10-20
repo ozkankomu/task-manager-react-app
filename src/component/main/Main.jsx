@@ -3,7 +3,7 @@ import TaskManager from "../taskmanager/TaskManager";
 import "./Main.css";
 
 const Main = () => {
-  const [showBar, setShowBar] = useState(false);
+  const [showBar, setShowBar] = useState(true);
 
   const handleTaskBar = () => {
     setShowBar(!showBar);
@@ -12,9 +12,9 @@ const Main = () => {
   return (
     <div className="container">
       <div className="text-center">
-        <h1>Task Tracer</h1>
+        <h1 className="my-3">Task Tracer</h1>
         <button className="btn btn-danger" onClick={handleTaskBar}>
-          Show Add Task Bar
+          {!showBar ? "Show Task Bar" : "Hide Task Bar"}
         </button>
       </div>
       {showBar && <TaskManager />}

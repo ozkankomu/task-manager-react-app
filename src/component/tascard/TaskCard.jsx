@@ -1,29 +1,35 @@
-import "./TaskCard.css";
 import React from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 
-const TaskCard = (props) => {
+const TaskCard = ({ todos, setTodos }) => {
+  const handleDelete = (id) => {
+    const newTodos = todos.filter((items) => items.id !== id);
+    setTodos(newTodos);
+  };
+
   return (
-    <div>
-      <Card className="text-center mt-3">
-        <Card.Header>Featured</Card.Header>
-        <Card.Body>
-          <Card.Title>{props.task}</Card.Title>
-          <Card.Text>{props.date}</Card.Text>
-          <Button className="m-1" variant="danger">
-            Task Completed
-          </Button>
-          <Button className="m-1" variant="danger" style={{ width: "140px" }}>
-            Delete
-          </Button>
-        </Card.Body>
-        <Card.Footer className="text-muted">
-          Disigned By Ozkan via React-Bootstrap
-        </Card.Footer>
-      </Card>
+    <div className="row gap-2">
+      {todos.map((item) => {
+        const { id, task, date } = item;
+        return (
+          <div className="card text-center" key={id}>
+            <div className="card-header">Tasks Schedule</div>
+            <div className="card-body">
+              <h5 className="card-title">{task}</h5>
+              <p className="card-text">{date}</p>
+              <div className="d-flex justify-content-evenly">
+                <button className="btn btn-danger"> Task Completed</button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => handleDelete(id)}
+                >
+                  Task Delete
+                </button>
+              </div>
+            </div>
+            <div className="card-footer text-muted">Created Via React</div>
+          </div>
+        );
+      })}
     </div>
   );
 };
