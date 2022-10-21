@@ -34,12 +34,16 @@ const TaskCard = ({ todos, setTodos }) => {
 
         return (
           <div className="card text-center" key={id}>
-            <div className={!completed ? "card-body " : "cord-body completed"}>
-              Tasks Schedule
+            <div
+              className={!completed ? "card-header " : "cord-body completed"}
+            >
+              {!completed ? "Task Avtive" : "Task Completed"}
             </div>
             <div className="card-body">
-              <h5 className="card-title">{task}</h5>
-              <p className="card-text">
+              <h5 className={!completed ? "card-title" : "card-title line"}>
+                {task}
+              </h5>
+              <p className={!completed ? "card-text" : "card-text line"}>
                 {new Date(date).toLocaleString("tr-TR")}
               </p>
               <div className="d-flex justify-content-evenly">
@@ -57,7 +61,15 @@ const TaskCard = ({ todos, setTodos }) => {
                 </button>
               </div>
             </div>
-            <div className="card-footer text-muted">Created Via React</div>
+            <div
+              className={
+                !completed
+                  ? "card-footer text-muted "
+                  : "card-footer  completed"
+              }
+            >
+              Created Via React
+            </div>
           </div>
         );
       })}
