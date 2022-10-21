@@ -12,6 +12,7 @@ const TaskManager = () => {
     date: "",
     completed: false,
   });
+  console.log(...todos);
 
   const handleTasks = (e) => {
     e.preventDefault();

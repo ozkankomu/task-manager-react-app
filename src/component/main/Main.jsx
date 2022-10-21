@@ -12,7 +12,7 @@ const Main = () => {
   return (
     <div className="container">
       <div className="text-center">
-        <h1 className="my-3">Task Tracer</h1>
+        <h1 className="my-3">Task Manager</h1>
         <button className="btn btn-danger" onClick={handleTaskBar}>
           {!showBar ? "Show Task Bar" : "Hide Task Bar"}
         </button>
